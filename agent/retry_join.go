@@ -5,10 +5,9 @@ import (
 	"strings"
 	"time"
 
-	discoverhcp "github.com/hashicorp/consul/agent/hcp/discover"
-	discover "github.com/hashicorp/go-discover"
-	discoverk8s "github.com/hashicorp/go-discover/provider/k8s"
 	"github.com/hashicorp/go-hclog"
+	discover "github.com/kevrocks67/go-discover"
+	discoverk8s "github.com/kevrocks67/go-discover/provider/k8s"
 
 	"github.com/hashicorp/consul/lib"
 )
@@ -115,7 +114,6 @@ func newDiscover() (*discover.Discover, error) {
 		providers[k] = v
 	}
 	providers["k8s"] = &discoverk8s.Provider{}
-	providers["hcp"] = &discoverhcp.Provider{}
 
 	return discover.New(
 		discover.WithUserAgent(lib.UserAgent()),

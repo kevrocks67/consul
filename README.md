@@ -6,6 +6,15 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/_/consul.svg)](https://hub.docker.com/_/consul)
 [![Go Report Card](https://goreportcard.com/badge/github.com/hashicorp/consul)](https://goreportcard.com/report/github.com/hashicorp/consul)
 
+**What is this fork about**
+
+This fork simply replaces the go-discover module with my own fork
+[kevrocks67/go-discover](https://github.com/kevrocks67/go-discover).
+What this does is add support for discovery of libvirt VM's through
+metadata defined in the libvirt XML.
+
+---
+
 Consul is a distributed, highly available, and data center aware solution to connect and configure applications across dynamic, distributed infrastructure.
 
 * Website: https://www.consul.io
@@ -52,7 +61,7 @@ A few quick start guides are available on the Consul website:
 * **Minikube install:** https://learn.hashicorp.com/tutorials/consul/kubernetes-minikube
 * **Kind install:** https://learn.hashicorp.com/tutorials/consul/kubernetes-kind
 * **Kubernetes install:** https://learn.hashicorp.com/tutorials/consul/kubernetes-deployment-guide
-* **Deploy HCP Consul:** https://learn.hashicorp.com/tutorials/consul/hcp-gs-deploy 
+* **Deploy HCP Consul:** https://learn.hashicorp.com/tutorials/consul/hcp-gs-deploy
 
 ## Documentation
 

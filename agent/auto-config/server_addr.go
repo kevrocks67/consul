@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/hashicorp/consul/lib"
-	"github.com/hashicorp/go-discover"
-	discoverk8s "github.com/hashicorp/go-discover/provider/k8s"
+	"github.com/kevrocks67/go-discover"
+	discoverk8s "github.com/kevrocks67/go-discover/provider/k8s"
 
 	"github.com/hashicorp/go-hclog"
 )

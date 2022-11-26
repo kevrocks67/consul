@@ -28,7 +28,7 @@ export PATH := $(PWD)/bin:$(GOPATH)/bin:$(PATH)
 GIT_COMMIT?=$(shell git rev-parse --short HEAD)
 GIT_COMMIT_YEAR?=$(shell git show -s --format=%cd --date=format:%Y HEAD)
 GIT_DIRTY?=$(shell test -n "`git status --porcelain`" && echo "+CHANGES" || true)
-GIT_IMPORT=github.com/hashicorp/consul/version
+GIT_IMPORT=github.com/kevrocks67/consul/version
 DATE_FORMAT="%Y-%m-%dT%H:%M:%SZ" # it's tricky to do an RFC3339 format in a cross platform way, so we hardcode UTC
 GIT_DATE=$(shell $(CURDIR)/build-support/scripts/build-date.sh) # we're using this for build date because it's stable across platform builds
 GOLDFLAGS=-X $(GIT_IMPORT).GitCommit=$(GIT_COMMIT)$(GIT_DIRTY) -X $(GIT_IMPORT).BuildDate=$(GIT_DATE)
@@ -148,7 +148,7 @@ dev: dev-build
 
 dev-build:
 	mkdir -p bin
-	CGO_ENABLED=0 go install -ldflags "$(GOLDFLAGS)" -tags "$(GOTAGS)"
+	CGO_ENABLED=1 go install -ldflags "$(GOLDFLAGS)" -tags "$(GOTAGS)"
 	# rm needed due to signature caching (https://apple.stackexchange.com/a/428388)
 	rm -f ./bin/consul
 	cp ${MAIN_GOPATH}/bin/consul ./bin/consul
@@ -205,7 +205,7 @@ endif
 # linux builds a linux binary compatible with the source platform
 linux:
 	@mkdir -p ./pkg/bin/linux_$(GOARCH)
-	CGO_ENABLED=0 GOOS=linux GOARCH=$(GOARCH) go build -o ./pkg/bin/linux_$(GOARCH) -ldflags "$(GOLDFLAGS)" -tags "$(GOTAGS)"
+	CGO_ENABLED=1 GOOS=linux GOARCH=$(GOARCH) go build -o ./pkg/bin/linux_$(GOARCH) -ldflags "$(GOLDFLAGS)" -tags "$(GOTAGS)"
 
 # dist builds binaries for all platforms and packages them for distribution
 dist:
